@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Management Reddy - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>Asset Management Reddy</h1>
+            </div>
+            <div class="user-info">
+                <span>Welcome, <a href="profile.html" id="usernameDisplay">@username</a></span>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- User Investments Section -->
+        <section class="user-investments">
+            <h2>Your Investments</h2>
+            <div id="userInvestmentsContainer" class="investments-grid">
+                <!-- User investments will be populated here -->
+            </div>
+        </section>
+
+        <!-- Available Funds Section -->
+        <section class="available-funds">
+            <h2>Available Funds</h2>
+            <div class="funds-info">
+                <div class="fund-amount">
+                    <span class="label">Available Balance:</span>
+                    <span class="amount" id="availableAmount">₹0</span>
+                </div>
+                <button id="addFundsBtn" class="btn-secondary">Add Funds</button>
+                <button id="withdrawFundsBtn" class="btn-secondary">Withdraw Funds</button>
+            </div>
+        </section>
+
+        <!-- Investment Plans Section -->
+        <section class="investment-plans">
+            <h2>Investment Plans</h2>
+            <div id="fundsContainer" class="funds-grid">
+                <!-- Investment funds will be populated here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Funds Modal -->
+    <div id="addFundsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Add Funds</h3>
+            <div class="form-group">
+                <label for="addAmount">Amount (₹)</label>
+                <input type="number" id="addAmount" placeholder="Enter amount" min="100" step="100">
+            </div>
+            <button id="confirmAddFunds" class="btn-primary">Add Funds</button>
+        </div>
+    </div>
+
+    <!-- Withdraw Funds Modal -->
+    <div id="withdrawFundsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Withdraw Funds</h3>
+            <div class="form-group">
+                <label for="withdrawAmount">Amount (₹)</label>
+                <input type="number" id="withdrawAmount" placeholder="Enter amount" min="100" step="100">
+            </div>
+            <button id="confirmWithdraw" class="btn-primary">Withdraw Funds</button>
+        </div>
+    </div>
+
+    <!-- Fund Details Modal -->
+    <div id="fundDetailsModal" class="modal">
+        <div class="modal-content fund-details">
+            <span class="close">&times;</span>
+            <div id="fundDetailsContent">
+                <!-- Fund details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Modal -->
+    <div id="investmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Invest in <span id="selectedFundName"></span></h3>
+            <div class="form-group">
+                <label for="investmentAmount">Investment Amount (₹)</label>
+                <input type="number" id="investmentAmount" placeholder="Enter amount" min="100" step="100">
+            </div>
+            <button id="confirmInvestment" class="btn-primary">Invest Now</button>
+        </div>
+    </div>
+
+    <!-- Success/Error Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="messageTitle"></h3>
+            <p id="messageText"></p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

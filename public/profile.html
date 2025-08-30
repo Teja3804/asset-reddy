@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Management Reddy - Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>Asset Management Reddy</h1>
+            </div>
+            <div class="user-info">
+                <span>Welcome, <span id="usernameDisplay">@username</span></span>
+                <a href="dashboard.html" class="btn-secondary">Dashboard</a>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Available Funds Section -->
+        <section class="available-funds-profile">
+            <h2>Available Funds</h2>
+            <div class="funds-display">
+                <div class="fund-amount-large">
+                    <span class="label">Current Balance:</span>
+                    <span class="amount-large" id="availableAmount">₹0</span>
+                </div>
+                <div class="fund-actions">
+                    <button id="addFundsBtn" class="btn-primary">Add Funds</button>
+                    <button id="withdrawFundsBtn" class="btn-secondary">Withdraw Funds</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transaction History Section -->
+        <section class="transaction-history">
+            <h2>Transaction History</h2>
+            <div class="history-toggle">
+                <button id="toggleHistory" class="btn-toggle">
+                    <span>Show History</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="historyContainer" class="history-container" style="display: none;">
+                <div id="transactionsList">
+                    <!-- Transactions will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Details Section -->
+        <section class="personal-details">
+            <h2>Personal Details</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <label>Full Name:</label>
+                    <span id="fullName">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Username:</label>
+                    <span id="username">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>PAN Number:</label>
+                    <span id="panNumber">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Aadhar Number:</label>
+                    <span id="aadharNumber">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Email:</label>
+                    <span id="email">-</span>
+                    <button id="changeEmailBtn" class="btn-small">Change</button>
+                </div>
+                <div class="detail-item">
+                    <label>Phone:</label>
+                    <span id="phone">-</span>
+                    <button id="changePhoneBtn" class="btn-small">Change</button>
+                </div>
+                <div class="detail-item">
+                    <label>Address:</label>
+                    <span id="address">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Account Settings Section -->
+        <section class="account-settings">
+            <h2>Account Settings</h2>
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <h3>Change Password</h3>
+                    <p>Update your account password</p>
+                    <button id="changePasswordBtn" class="btn-secondary">Change Password</button>
+                </div>
+                <div class="setting-item">
+                    <h3>Support</h3>
+                    <p>Get help and support</p>
+                    <button id="supportBtn" class="btn-secondary">Contact Support</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Funds Modal -->
+    <div id="addFundsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Add Funds</h3>
+            <div class="form-group">
+                <label for="addAmount">Amount (₹)</label>
+                <input type="number" id="addAmount" placeholder="Enter amount" min="100" step="100">
+            </div>
+            <button id="confirmAddFunds" class="btn-primary">Add Funds</button>
+        </div>
+    </div>
+
+    <!-- Withdraw Funds Modal -->
+    <div id="withdrawFundsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Withdraw Funds</h3>
+            <div class="form-group">
+                <label for="withdrawAmount">Amount (₹)</label>
+                <input type="number" id="withdrawAmount" placeholder="Enter amount" min="100" step="100">
+            </div>
+            <button id="confirmWithdraw" class="btn-primary">Withdraw Funds</button>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Change Password</h3>
+            <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" placeholder="Enter current password">
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" placeholder="Enter new password">
+            </div>
+            <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" placeholder="Confirm new password">
+            </div>
+            <button id="confirmChangePassword" class="btn-primary">Change Password</button>
+        </div>
+    </div>
+
+    <!-- Change Email Modal -->
+    <div id="changeEmailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Change Email</h3>
+            <div class="form-group">
+                <label for="newEmail">New Email Address</label>
+                <input type="email" id="newEmail" placeholder="Enter new email">
+            </div>
+            <div class="form-group">
+                <label for="phoneVerification">Phone Verification OTP</label>
+                <input type="text" id="phoneVerification" placeholder="Enter OTP sent to your phone" maxlength="6">
+            </div>
+            <button id="sendPhoneOtp" class="btn-secondary">Send OTP</button>
+            <button id="confirmChangeEmail" class="btn-primary">Change Email</button>
+        </div>
+    </div>
+
+    <!-- Change Phone Modal -->
+    <div id="changePhoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Change Phone Number</h3>
+            <div class="form-group">
+                <label for="newPhone">New Phone Number</label>
+                <div class="phone-input">
+                    <select id="newCountryCode">
+                        <option value="+91">+91 (India)</option>
+                        <option value="+1">+1 (USA)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+61">+61 (Australia)</option>
+                        <option value="+86">+86 (China)</option>
+                    </select>
+                    <input type="tel" id="newPhone" placeholder="Enter new phone number">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emailVerification">Email Verification OTP</label>
+                <input type="text" id="emailVerification" placeholder="Enter OTP sent to your email" maxlength="6">
+            </div>
+            <div class="form-group">
+                <label for="phoneVerification2">Phone Verification OTP</label>
+                <input type="text" id="phoneVerification2" placeholder="Enter OTP sent to your phone" maxlength="6">
+            </div>
+            <button id="sendEmailOtp" class="btn-secondary">Send Email OTP</button>
+            <button id="sendPhoneOtp2" class="btn-secondary">Send Phone OTP</button>
+            <button id="confirmChangePhone" class="btn-primary">Change Phone</button>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div id="supportModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Contact Support</h3>
+            <div class="form-group">
+                <label for="supportSubject">Subject</label>
+                <input type="text" id="supportSubject" placeholder="Enter subject" required>
+            </div>
+            <div class="form-group">
+                <label for="supportMessage">Message</label>
+                <textarea id="supportMessage" placeholder="Describe your problem" rows="4" required></textarea>
+            </div>
+            <button id="sendSupport" class="btn-primary">Send Message</button>
+        </div>
+    </div>
+
+    <!-- Success/Error Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="messageTitle"></h3>
+            <p id="messageText"></p>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

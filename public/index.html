@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Management Reddy - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <h1>Asset Management Reddy</h1>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <h2>Welcome Back</h2>
+                <p>Please login to your account</p>
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="btn-primary">Login</button>
+                
+                <div class="form-links">
+                    <a href="#" id="signinLink">Sign In</a>
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

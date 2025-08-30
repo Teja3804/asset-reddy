@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Management Reddy - Sign In</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="signin-card">
+            <div class="logo">
+                <h1>Asset Management Reddy</h1>
+            </div>
+            
+            <form id="signinForm" class="signin-form">
+                <h2>Create Account</h2>
+                <p>Please fill in your details to register</p>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Enter first name">
+                        <small class="hint">Enter your name as per PAN</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Enter last name">
+                        <small class="hint">Enter your name as per PAN</small>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pan">PAN Number *</label>
+                        <input type="text" id="pan" name="pan" required placeholder="Enter PAN number" maxlength="10" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aadhar">Aadhar Number *</label>
+                        <input type="text" id="aadhar" name="aadhar" required placeholder="Enter Aadhar number" maxlength="12" pattern="[0-9]{12}">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <textarea id="address" name="address" required placeholder="Enter your complete address" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email ID *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <div class="phone-input">
+                        <select id="countryCode" name="countryCode">
+                            <option value="+91">+91 (India)</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+61">+61 (Australia)</option>
+                            <option value="+86">+86 (China)</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter phone number">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" name="username" required placeholder="Choose a username">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required placeholder="Create a password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Create Account</button>
+                
+                <div class="form-links">
+                    <a href="index.html">Already have an account? Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Email OTP Modal -->
+    <div id="emailOtpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Email Verification</h3>
+            <p>We've sent an OTP to your email address. Please enter it below:</p>
+            <div class="form-group">
+                <input type="text" id="emailOtp" placeholder="Enter 6-digit OTP" maxlength="6">
+            </div>
+            <button id="verifyEmailOtp" class="btn-primary">Verify Email OTP</button>
+        </div>
+    </div>
+
+    <!-- Phone OTP Modal -->
+    <div id="phoneOtpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Phone Verification</h3>
+            <p>We've sent an OTP to your phone number. Please enter it below:</p>
+            <div class="form-group">
+                <input type="text" id="phoneOtp" placeholder="Enter 6-digit OTP" maxlength="6">
+            </div>
+            <button id="verifyPhoneOtp" class="btn-primary">Verify Phone OTP</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Registration Successful!</h3>
+            <p>Your account has been created successfully. You will be redirected to login page.</p>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script src="signin.js"></script>
+</body>
+</html>
